@@ -1,1 +1,2 @@
-Random text
+Permissions and bash scripting
+

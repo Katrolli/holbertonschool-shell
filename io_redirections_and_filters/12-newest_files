@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lArt | head -10 
+ls | sort -M 

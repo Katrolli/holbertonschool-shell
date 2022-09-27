@@ -1,0 +1,2 @@
+#!/bin/bash
+ls -lArt | head -10 

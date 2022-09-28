@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '{print $1}' acr | sed 's/[a-z]//g' acr | cut -d " " -f1 | sed "s/[^[:alnum:]-]//g"
+cut -c1 | paste -s -d """

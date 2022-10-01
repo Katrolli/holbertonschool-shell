@@ -119,6 +119,96 @@ One kind of program frequently used in pipelines is called a *filter*. Filters t
 [sed](http://linuxcommand.org/lc3_man_pages/sed1.html) - Stream editor. Can perform more sophisticated text translations than tr.
 
 [awk](http://linuxcommand.org/lc3_man_pages/awk1.html) - An entire programming language designed for constructing filters. 
+
+# Shell, init files, variables and expansions
+
+- Expansions
+
+An expansion acts as an argument to a command. With expansions, we type something and it is expanded into something else before the shell acts upon it.
+
+1- Pathname expansion
+The mechanism by which wildcards work is called *pathname expansion*.
+To give a simple example . using echo to print all files starting with the letter D: 
+
+```[me@linuxbox me]$ echo D*```
+
+```Desktop Documents```
+
+2- Tilde expansion
+The tilde character (“~”) has a special meaning. When used at the beginning of a word, it expands into the name of the home directory of the named user, or if no user is named, the home directory of the current user:
+
+```[me@linuxbox me]$ echo ~```
+
+```/home/me```
+
+
+
+
+
+3- Arithmetic Expansion
+
+The shell allows arithmetic to be performed by expansion. This allow us to use the shell prompt as a calculator:
+
+```[me@linuxbox me]$ echo $((2 + 2))```
+
+```4```
+
+Arithmetic expansion uses the form:
+
+```$((expression))```
+
+
+-4 Parameter expansion
+
+It's a feature that is more useful in shell scripts than directly on the command line. Many of its capabilities have to do with the system's ability to store small chunks of data and to give each chunk a name. Many such chunks, more properly called variables, are available for our examination. For example, the variable named “USER” contains our user name. To invoke parameter expansion and reveal the contents of USER we would do this:
+
+
+```[me@linuxbox me]$ echo $USER```
+
+```me```
+
+5- Command Substitution
+
+Command substitution allows us to use the output of a command as an expansion:
+
+```[me@linuxbox me]$ echo $(ls)```
+
+```Desktop Documents ls-output.txt Music Pictures Public Templates Videos```
+
+## Variables
+
+ Bash keeps a list of two types of variables 
+
+- Global Variables
+
+Global variables or environment variables are available in all shells. The env or printenv commands can be used to display environment variables. These programs come with the sh-utils package. To declare a global variable we use the syntax ```export VARNAME="value"```
+
+- Local Variables
+
+Local variables are only available in the current shell. Using the set built-in command without any options will display a list of all variables (including environment variables) and functions. The output will be sorted according to the current locale and displayed in a reusable format. To declare a local variable we use the syntax ```VARNAME="value"```.
+
+- Reserved Variables
+
+These are the default variables that differnet types of shell use to operate.
+
+
+### Shell initialization files
+
+These are the types of files that bash reads to configure the system and reads
+different inputs. These usually set the shell variables PATH, USER, MAIL, HOSTNAME and HISTSIZE.
+
+#### Alias command
+
+The alias command makes it possible to launch any command or group of commands (inclusive of any options, arguments and redirection) by entering a pre-set string (i.e., sequence of characters).
+
+That is, it allows a user to create simple names or abbreviations (even consisting of just a single character) for commands regardless of how complex the original commands are and then use them in the same way that ordinary commands are used. 
+
+As a trivial example of alias creation, the alias p could be created for the commonly used pwd command, which shows the current location of the user in the directory structure (and which is an abbreviation for present working directory), by typing the following command and then pressing the ENTER key:
+
+alias p="pwd" , then, to show the current location, instead of typing pwd, the user would only have to type the letter p and press the ENTER key, i.e.,
+
+***p***
+
  
 ## This repo will serve as a basic introduction to shell , terminal and scripting ideas for Holberton School Albania.
 
